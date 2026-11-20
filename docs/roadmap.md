@@ -13,11 +13,11 @@ Acompanhamento incremental das entregas do **Patch Radar**. Cada item representa
 - [x] Criar `README.md`, licença MIT (`LICENSE`) e `.gitignore`.
 
 ### Etapa 0.2 — Containerização, Empacotamento e CI Inicial
-- [ ] Configurar `pyproject.toml` (metadados, dependências, `ruff`, `pytest`, script `patch-radar`) e `.env.example`.
-- [ ] Criar `Dockerfile`, `.dockerignore` e `docker-compose.yml` (`python:3.12-slim` + `uv` em `/opt/venv`).
-- [ ] Criar estrutura base do pacote `src/patch_radar/` e primeiro teste smoke em `tests/`.
-- [ ] Configurar pipeline CI em `.github/workflows/ci.yml` (`ruff check`, `ruff format --check` e `pytest`).
-- [ ] Validar execução completa de `ruff` e `pytest` dentro do container e no GitHub Actions.
+- [x] Configurar `pyproject.toml` (metadados, dependências, `ruff`, `pytest`, script `patch-radar`) e `.env.example`.
+- [x] Criar `Dockerfile`, `.dockerignore` e `docker-compose.yml` (`python:3.12-slim` + `uv` em `/opt/venv`).
+- [x] Criar estrutura base do pacote `src/patch_radar/` e primeiro teste smoke em `tests/`.
+- [x] Configurar pipeline CI em `.github/workflows/ci.yml` (`ruff check`, `ruff format --check` e `pytest`).
+- [x] Validar execução completa de `ruff` e `pytest` dentro do container e no GitHub Actions.
 
 ---
 

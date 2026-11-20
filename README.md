@@ -36,11 +36,23 @@ O projeto segue **Clean Architecture** (`domain`, `use_cases`, `adapters`, `inte
 
 ---
 
+## Execução com Docker
+
+Todo o ambiente de desenvolvimento, testes e lint roda isolado em container:
+
+```bash
+cp .env.example .env
+docker compose build
+docker compose run --rm app ruff check .
+docker compose run --rm app ruff format --check .
+docker compose run --rm app pytest --cov=patch_radar
+```
+
+---
+
 ## Status do Projeto
 
 Em desenvolvimento incremental por fases. Acompanhe o progresso atualizado em [`docs/roadmap.md`](docs/roadmap.md).
-
-> As instruções completas de execução via Docker Compose e exemplos de uso da CLI serão adicionadas ao concluir a configuração do ambiente na **Fase 0.2**.
 
 ---
 
