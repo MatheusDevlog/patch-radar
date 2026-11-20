@@ -1,0 +1,39 @@
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Dados locais persistidos (SQLite e ChromaDB)
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+
+# Testes, cobertura e linters
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Editores e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
