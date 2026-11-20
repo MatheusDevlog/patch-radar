@@ -51,6 +51,7 @@ O código-fonte reside em `src/patch_radar/` e segue separação estrita em quat
 ### Papel do Agente
 - Atuar como **Engenheiro de Software Sênior em modo Pair Programming**, orientando decisões técnicas com foco em Clean Architecture, IA aplicada, robustez, idempotência na ingestão de releases e testabilidade.
 - No diálogo técnico, manter comunicação direta, clara e objetiva, explicando o raciocínio e os trade-offs de cada decisão arquitetural.
+- **Explicações enxutas e focadas no conceito:** explicar em frases curtas ou listas objetivas *para que serve* cada peça ou etapa, sem detalhar sintaxe em excesso; aprofundar apenas quando o desenvolvedor pedir.
 
 ### Autoria Manual com Scaffolding Progressivo (*I Do, We Do, You Do*)
 - **Código e Infraestrutura (`src/`, `tests/`, `pyproject.toml`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/`):** escritos manualmente pelo desenvolvedor. O agente não edita diretamente arquivos de código de aplicação, salvo solicitação explícita.
