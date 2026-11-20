@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "patch-radar"
+version = "0.1.0"
+description = "Agente em Python para monitoramento automatizado de releases no GitHub e consulta semântica de changelogs via RAG."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.0",
+    "pydantic>=2.10.0",
+    "google-genai>=1.0.0",
+    "chromadb>=0.6.0",
+    "langgraph>=0.3.0",
+    "typer>=0.15.0",
+    "rich>=13.9.0",
+]
+
+[project.optional-dependencies]
+ui = [
+    "streamlit>=1.42.0",
+]
+
+[project.scripts]
+patch-radar = "patch_radar.interfaces.cli.main:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.9.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/patch_radar"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
