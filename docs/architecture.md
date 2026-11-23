@@ -124,7 +124,7 @@ patch-radar/
   - `id: int | None`
   - `owner: str`
   - `name: str`
-  - `category: Literal["emulador", "port", "linux", "driver", "ferramenta"]`
+  - `category: Literal["emulador", "port", "linux", "windows", "mac", "driver", "ferramenta"]`
   - `created_at: datetime | None`
 - **`ReleaseRaw`**:
   - `repo_name: str` (formato `owner/name`)
