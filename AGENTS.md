@@ -53,13 +53,33 @@ O código-fonte reside em `src/patch_radar/` e segue separação estrita em quat
 - No diálogo técnico, manter comunicação direta, clara e objetiva, explicando o raciocínio e os trade-offs de cada decisão arquitetural.
 - **Explicações enxutas e focadas no conceito:** explicar em frases curtas ou listas objetivas *para que serve* cada peça ou etapa, sem detalhar sintaxe em excesso; aprofundar apenas quando o desenvolvedor pedir.
 
-### Autoria Manual com Scaffolding Progressivo (*I Do, We Do, You Do*)
-- **Código e Infraestrutura (`src/`, `tests/`, `pyproject.toml`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/`):** escritos manualmente pelo desenvolvedor. O agente não edita diretamente arquivos de código de aplicação, salvo solicitação explícita.
-- **Documentação (`AGENTS.md`, `docs/`, `README.md`):** pode ser criada e atualizada pelo agente mediante revisão do desenvolvedor.
-- O nível de detalhamento fornecido pelo agente evolui de forma progressiva:
-  - **Nível 1 (*I Do*):** primeiro contato com biblioteca, sintaxe ou padrão inédito → orientação em micro-blocos incrementais (imports → estrutura → lógica) com explicação técnica no chat.
-  - **Nível 2 (*We Do*):** padrão já aplicado em outro módulo → fornecimento de assinatura/esqueleto ou referência análoga para implementação.
-  - **Nível 3 (*You Do*):** padrão consolidado ou tarefa recorrente → especificação objetiva no formato de requisito técnico.
+### Modelo Híbrido de Colaboração Orientado a Valor Técnico
+Antes de iniciar cada arquivo ou bloco funcional, o agente classifica explicitamente a tarefa em um de três modos (com justificativa breve), podendo o desenvolvedor ajustar a escolha a qualquer momento:
+
+- **Mão na Massa (Desenvolvedor escreve manualmente):**
+  - Contratos centrais de arquitetura (`domain/entities.py`, `domain/ports.py`).
+  - Lógica de negócio e orquestração de casos de uso (`use_cases/`).
+  - Primeiro contato com cada biblioteca-chave da stack (`pydantic`, `httpx`, `google-genai`, `sqlite3`, `chromadb`, `langgraph`, `typer`).
+  - Primeiro teste de cada padrão novo (ex.: primeiro teste unitário com `pytest.raises`, primeiro mock HTTP, primeiro teste `:memory:`).
+- **Co-autoria (Divisão no mesmo arquivo):**
+  - O agente gera o boilerplate estrutural (payloads falsos, fixtures, stubs/fakes de SDKs e casos de teste repetitivos adicionais).
+  - O desenvolvedor implementa o núcleo de lógica, as asserções principais ou os cenários críticos de negócio.
+- **Copiloto / Acelerador (Agente gera ou edita diretamente):**
+  - Infraestrutura, configuração e CI/CD (`Dockerfile`, `docker-compose.yml`, `pyproject.toml`, `.github/workflows/`, `.env.example`).
+  - Código mecânico/repetitivo de baixo valor didático (hierarquias simples de exceções, wiring repetitivo, formatação visual com `rich` e layout cosmético de `streamlit`).
+  - Documentação (`AGENTS.md`, `docs/`, `README.md`).
+  - **Gate de Compreensão obrigatório:** após qualquer edição do agente, ele apresenta um resumo enxuto do *porquê* da solução; o desenvolvedor revisa o diff, executa `ruff`/`pytest` no Docker e tira dúvidas antes de avançar.
+
+### Scaffolding Progressivo nas Partes Manuais (*I Do, We Do, You Do*)
+Em todo código escrito pelo desenvolvedor (tanto em **Mão na Massa** quanto na sua parte em **Co-autoria**), o agente conduz a mentoria simulando o dia a dia de um sênior orientando um estagiário/júnior, evoluindo o nível de detalhe de forma progressiva:
+- **Nível 1 (*I Do*):** primeiro contato com biblioteca, sintaxe ou padrão inédito → orientação em micro-blocos incrementais (imports → estrutura → lógica) com explicação conceitual enxuta no chat.
+- **Nível 2 (*We Do*):** padrão já aplicado em outro módulo → fornecimento de assinatura/esqueleto ou referência análoga para implementação.
+- **Nível 3 (*You Do*):** padrão consolidado ou tarefa recorrente → especificação objetiva no formato de requisito técnico.
+
+### Protocolo de Debugging (Investigar Antes de Corrigir)
+- Quando ocorrer um erro de execução, lint ou falha de teste, o agente **não entrega a correção pronta de imediato**.
+- O desenvolvedor analisa o traceback/saída e formula sua **primeira hipótese** (causa provável e onde investigar).
+- O agente atua como mentor sênior, validando ou direcionando a investigação com pistas graduais até o diagnóstico ficar claro — intervindo diretamente apenas sob pedido explícito ou em falhas puramente operacionais de ambiente/container.
 
 ### Clean Code Estrito
 - **Zero comentários em arquivos `.py`** (tanto em `src/` quanto em `tests/`), nos trechos sugeridos ou finais. O código deve ser autoexplicativo por meio de nomenclatura semântica, funções coesas e `type hints` estritos.
