@@ -27,8 +27,8 @@ Acompanhamento incremental das entregas do **Patch Radar**. Cada item representa
 - [x] Implementar exceções de domínio em `src/patch_radar/domain/exceptions.py`.
 - [x] Definir interfaces (`Protocol`) em `src/patch_radar/domain/ports.py`.
 - [x] Escrever testes unitários de domínio (`tests/unit/test_domain.py`).
-- [ ] Implementar `src/patch_radar/adapters/github_client.py` com `httpx` (timeouts, tratamento de erros HTTP e rate limit) + testes unitários com mocks.
-- [ ] Implementar `src/patch_radar/adapters/gemini_client.py` com `google-genai` (saída estruturada Pydantic e embeddings) + testes unitários com mocks.
+- [x] Implementar `src/patch_radar/adapters/github_client.py` com `httpx` (timeouts, tratamento de erros HTTP e rate limit) + testes unitários com mocks.
+- [x] Implementar `src/patch_radar/adapters/gemini_client.py` com `google-genai` (saída estruturada Pydantic e embeddings) + testes unitários com mocks.
 
 ---
 
